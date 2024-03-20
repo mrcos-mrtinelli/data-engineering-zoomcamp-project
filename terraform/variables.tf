@@ -35,6 +35,6 @@ variable "vm_network_interface" {
 
 # Google Storage Bucket Information
 variable "bucket_name" {
-    description = ""
-    default = ""
+    description = "Google Storage Name"
+    default = "default_bucket"
 }
