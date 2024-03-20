@@ -5,29 +5,29 @@
 
 # Create Google Compute VM
 resource "google_compute_instance" "default_vm" {
-  name         = "default-vm"
-  machine_type = "e2-standard-4"
-  zone         = "us-west1-a"
-  project      = "dez-course-2024"
+  name         = var.vm_name
+  machine_type = var.machine_type
+  zone         = var.vm_zone
+  project      = var.project_id
   boot_disk {
     initialize_params {
-      image = "ubuntu-2004-lts"
-      size  = "32"
+      image = var.vm_image
+      size  = var.vm_image_size
     }
   }
   network_interface {
-    network = "default"
+    network = var.vm_network_interface
   }
 }
 
 # Create Google Storage Bucket
-resource "random_id" "bucket_prefix" {
+resource "random_id" "bucket_suffix" {
   byte_length = 8
 }
 resource "google_storage_bucket" "default_bucket" {
-  name                        = "default_bucket_4_data_engineering_project"
-  location                    = "US"
-  project                     = "dez-course-2024"
+  name                        = "${var.bucket_name}-${random_id.bucket_suffix.hex}"
+  location                    = var.location
+  project                     = var.project_id
   force_destroy               = true
   uniform_bucket_level_access = true
   versioning {
