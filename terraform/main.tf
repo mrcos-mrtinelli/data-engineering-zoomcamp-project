@@ -1,6 +1,5 @@
 # to do
 # add scheduling strategy to use: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance.html#size
-# extract variables and create variables.tf file
 # create big query infra
 
 # Create Google Compute VM
@@ -25,7 +24,7 @@ resource "random_id" "bucket_suffix" {
   byte_length = 8
 }
 resource "google_storage_bucket" "default_bucket" {
-  name                        = "${var.bucket_name}-${random_id.bucket_suffix.hex}"
+  name                        = "${var.bucket_name}_${random_id.bucket_suffix.hex}"
   location                    = var.location
   project                     = var.project_id
   force_destroy               = true
