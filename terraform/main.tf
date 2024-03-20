@@ -25,7 +25,7 @@ resource "random_id" "bucket_suffix" {
   byte_length = 8
 }
 resource "google_storage_bucket" "default_bucket" {
-  name                        = "${var.bucket_name}_${xrandom_id.bucket_suffix.hex}"
+  name                        = "${var.bucket_name}_${random_id.bucket_suffix.hex}"
   location                    = var.location
   project                     = var.project_id
   force_destroy               = true
