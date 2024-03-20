@@ -1,6 +1,5 @@
 # to do
 # add scheduling strategy to use: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance.html#size
-# extract variables and create variables.tf file
 # create big query infra
 
 # Create Google Compute VM
