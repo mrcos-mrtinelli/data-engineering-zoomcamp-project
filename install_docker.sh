@@ -15,10 +15,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update -y
 
-# https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
-# Manage Docker as a non-root user
+# Install Docker
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user
+# Manage Docker as a non-root user
 
 sudo groupadd docker
 sudo usermod -aG docker $USER
