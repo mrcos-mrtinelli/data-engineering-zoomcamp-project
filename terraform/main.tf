@@ -17,6 +17,9 @@ resource "google_compute_instance" "default_vm" {
   network_interface {
     network = var.vm_network_interface
   }
+  metadata = {
+    ssh-keys = "${var.vm_ssh_user}:${file(var.vm_ssh_pub_key_file)}"
+  }
 }
 
 # Create Google Storage Bucket
