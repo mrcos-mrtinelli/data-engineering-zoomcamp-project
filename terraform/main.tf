@@ -41,3 +41,11 @@ resource "google_storage_bucket" "default_bucket" {
     }
   }
 }
+
+# Create Big Query Dataset
+resource "google_bigquery_dataset" "bq_dataset" {
+  dataset_id = var.bq_dataset_id
+  project    = var.project_id
+  location   = var.location
+
+}
