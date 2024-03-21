@@ -34,11 +34,11 @@ variable "vm_network_interface" {
 }
 variable "vm_ssh_user" {
   description = "VM Instance ssh keys"
-  default = "default_user"
+  default     = "default_user"
 }
 variable "vm_ssh_pub_key_file" {
   description = "VM Instance ssh publice key file"
-  default = "~/.ssh/vm_ssh_keys.pub"
+  default     = "~/.ssh/vm_ssh_keys.pub"
 }
 
 # Google Storage Bucket Information
@@ -50,5 +50,5 @@ variable "bucket_name" {
 # BigQuery Information
 variable "bq_dataset_id" {
   description = "BigQuery Dataset ID"
-  default = "bq_default"
+  default     = "bq_default"
 }
