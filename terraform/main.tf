@@ -2,6 +2,23 @@
 # add scheduling strategy to use: https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance.html#size
 # create big query infra
 
+terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = "5.21.0"
+    }
+  }
+}
+
+provider "google" {
+  # Credentials only needs to be set if you do not have the GOOGLE_APPLICATION_CREDENTIALS set
+  # if creating a variable for credentials, you can use a function
+  #  credentials = file(var.credentials)
+  project     = var.project_id
+  region      = var.location
+}
+
 # Create Google Compute VM
 resource "google_compute_instance" "default_vm" {
   name         = var.vm_name
