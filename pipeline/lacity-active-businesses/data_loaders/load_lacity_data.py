@@ -13,25 +13,23 @@ LIMIT = 50000
 
 @data_loader
 def load_data_from_api(**kwargs) -> DataFrame:
-    active_businesses = []
-    new_results = 200
+    has_data = True
     offset = 0
+    active_businesses = []
 
-    while new_results == 200:
+    while has_data:
         # limit and offset used together to page through
         # offset sets next page, e.g., page 2 = $limit=50&$offset=50
         url = f"{LACITY_DATA_URL}?$limit={LIMIT}&$offset={offset}"
 
-        lacity_api_response = requests.get(url)
-        new_results = lacity_api_response.status_code
-
         lacity_data = pd.read_csv(url)
+
+        if len(lacity_data) == 0:
+            has_data = False
+        
         active_businesses.append(lacity_data)
 
         offset += LIMIT
-
-        if offset > 2000:
-            break
     
     active_businesses = pd.concat(active_businesses)
 
