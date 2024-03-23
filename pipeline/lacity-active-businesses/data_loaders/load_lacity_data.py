@@ -24,12 +24,15 @@ def load_data_from_api(**kwargs) -> DataFrame:
 
         lacity_data = pd.read_csv(url)
 
-        if len(lacity_data) == 0:
-            has_data = False
+        # if len(lacity_data) == 0:
+        #     has_data = False
         
         active_businesses.append(lacity_data)
 
         offset += LIMIT
+
+        if offset > 100000:
+            break
     
     active_businesses = pd.concat(active_businesses)
 
