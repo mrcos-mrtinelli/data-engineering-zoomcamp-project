@@ -1,5 +1,8 @@
 .DS_Store
 
+# Credentials
+lacity-pipeline-service-acct-credential.json
+
 # Terraform ignores:
 
 # Local .terraform directories
@@ -36,3 +39,19 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# MAGE: https://docs.mage.ai/development/project/setup
+
+.file_versions
+.gitkeep
+.log
+.logs/
+.mage_temp_profiles
+.preferences.yaml
+.variables/
+__pycache__/
+docker-compose.override.yml
+logs/
+mage-ai.db
+mage_data/
+secrets/
