@@ -8,8 +8,13 @@ if 'test' not in globals():
 
 @transformer
 def transform(data, *args, **kwargs):
-    data["location_start_date"] = pd.to_datetime(data["location_start_date"],format="%Y-%m-%d")
-    data["location_end_date"] = pd.to_datetime(data["location_end_date"],format="%Y-%m-%d")
+    # reshape
+    data = data.drop('location_1', axis=1)
+    # rename
+    data = data.rename(columns={'location_account': 'id'})
+    # update dtypes
+    data["location_start_date"] = pd.to_datetime(data["location_start_date"], format="%Y-%m-%d")
+    data["location_end_date"] = pd.to_datetime(data["location_end_date"], format="%Y-%m-%d")
 
     return data
 
