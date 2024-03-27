@@ -3,7 +3,8 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - transform_lacity_data
+  - naics_description_table
+  - active_businesses_table
   executor_config: null
   executor_type: local_python
   has_callback: null
@@ -19,19 +20,52 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - export_lacity_data
+  - export_naics_description_table
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
-  name: transform_lacity_data
+  name: naics_description_table
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_lacity_data
+  uuid: naics_description_table
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - export_active_businesses_table
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: active_businesses_table
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - load_lacity_data
-  uuid: transform_lacity_data
+  uuid: active_businesses_table
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: export_naics_description_table
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - naics_description_table
+  uuid: export_naics_description_table
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
@@ -40,14 +74,14 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: export_lacity_data
+  name: export_active_businesses_table
   retry_config: null
   status: updated
   timeout: null
   type: data_exporter
   upstream_blocks:
-  - transform_lacity_data
-  uuid: export_lacity_data
+  - active_businesses_table
+  uuid: export_active_businesses_table
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
@@ -69,7 +103,7 @@ settings:
 spark_config: {}
 tags: []
 type: python
-updated_at: '2024-03-26 04:10:42'
+updated_at: '2024-03-27T00:55:11+00:00'
 uuid: lacity_active_businesses
 variables_dir: /home/src/mage_data/lacity-active-businesses
 widgets: []

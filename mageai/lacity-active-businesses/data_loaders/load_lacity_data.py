@@ -15,14 +15,21 @@ LIMIT = 50000
 def load_data_from_api(**kwargs) -> DataFrame:
     end_of_data = False
     offset = 0
+
     active_businesses = []
+    data_dtype = {
+    "naics": pd.Int64Dtype(),
+    "zip_code": str,
+    "council_district": pd.Int64Dtype()
+    }
+    dates = ["location_start_date", "location_end_date"]
 
     while not(end_of_data):
         # limit and offset used together to page through
         # offset sets next page, e.g., page 2 = $limit=50&$offset=50
         url = f"{LACITY_DATA_URL}?$limit={LIMIT}&$offset={offset}"
 
-        lacity_data = pd.read_csv(url)
+        lacity_data = pd.read_csv(url, dtype=data_dtype, parse_dates=dates)
 
         # if len(lacity_data) < 50000:
         #     end_of_data = True
