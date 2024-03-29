@@ -36,10 +36,10 @@ variable "vm_ssh_user" {
   description = "VM Instance ssh keys"
   default     = "default_user"
 }
-variable "vm_ssh_pub_key_file" {
-  description = "VM Instance ssh publice key file"
-  default     = "~/.ssh/vm_ssh_keys.pub"
-}
+# variable "vm_ssh_pub_key_file" {
+#   description = "VM Instance ssh publice key file"
+#   default     = "~/.ssh/vm_ssh_keys.pub"
+# }
 
 # Google Storage Bucket Information
 variable "bucket_name" {
