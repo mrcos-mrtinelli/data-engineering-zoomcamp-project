@@ -14,7 +14,7 @@ terraform {
 provider "google" {
   # Credentials only needs to be set if you do not have the GOOGLE_APPLICATION_CREDENTIALS set
   # if creating a variable for credentials, you can use a function
-  #  credentials = file(var.credentials)
+  credentials = file("${var.credentials_path}/${var.credentials_file}")
   project     = var.project_id
   region      = var.location
 }
@@ -37,7 +37,7 @@ resource "google_compute_instance" "default_vm" {
     access_config {}
   }
   metadata = {
-    ssh-keys = "${var.vm_ssh_user}:${file(var.vm_ssh_pub_key_file)}"
+    ssh-keys = "${var.vm_ssh_user}:${file("${var.vm_ssh_pub_key_path}/${var.vm_ssh_pub_key_file}")}"
   }
 
 }

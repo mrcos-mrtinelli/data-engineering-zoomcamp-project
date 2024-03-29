@@ -1,11 +1,17 @@
 # Project Information and Base Settings
 variable "project_id" {
-  description = "GCP Project ID"
+  description = "Set project_id in cstm.tfvars"
   default     = ""
 }
 variable "location" {
   description = "Location used throughout project"
   default     = "US"
+}
+variable "credentials_path" {
+  description = "Set credentials_path in cstm.tfvars."
+}
+variable "credentials_file" {
+  description = "Set credentials_file in cstm.tfvars."
 }
 # VM Settings
 variable "vm_name" {
@@ -36,9 +42,11 @@ variable "vm_ssh_user" {
   description = "VM Instance ssh keys"
   default     = "default_user"
 }
+variable "vm_ssh_pub_key_path" {
+  description = "Set vm_ssh_pub_key_path in cstm.tfvars"
+}
 variable "vm_ssh_pub_key_file" {
-  description = "VM Instance ssh publice key file"
-  default     = ""
+  description = "Set vm_ssh_pub_key_file in cstm.tfvars"
 }
 
 # Google Storage Bucket Information
