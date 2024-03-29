@@ -1,7 +1,7 @@
 # Project Information and Base Settings
 variable "project_id" {
   description = "GCP Project ID"
-  default     = "dez-course-2024"
+  default     = ""
 }
 variable "location" {
   description = "Location used throughout project"
@@ -36,10 +36,10 @@ variable "vm_ssh_user" {
   description = "VM Instance ssh keys"
   default     = "default_user"
 }
-# variable "vm_ssh_pub_key_file" {
-#   description = "VM Instance ssh publice key file"
-#   default     = "~/.ssh/vm_ssh_keys.pub"
-# }
+variable "vm_ssh_pub_key_file" {
+  description = "VM Instance ssh publice key file"
+  default     = ""
+}
 
 # Google Storage Bucket Information
 variable "bucket_name" {
