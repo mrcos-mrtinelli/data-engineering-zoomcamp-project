@@ -9,11 +9,8 @@ bucket_name = f"{os.environ['GENERATED_BUCKET_NAME']}"
 project_id = f"{os.environ['PROJECT_ID']}"
 table_name = 'lacity-active-businesses'
 
-user_code_path = f"{os.environ['USER_CODE_PATH']}"
-service_acct_file_name = f"{os.environ['SERVICE_ACCT_FILE_NAME']}"
-
 # set the enviroment variable
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = f'{user_code_path}/credentials/{service_acct_file_name}'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = f"{os.environ['GCP_SERVICE_ACCT_FILE']}"
 
 
 root_path = f'{bucket_name}/{table_name}'
