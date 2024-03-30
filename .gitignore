@@ -1,7 +1,5 @@
 .DS_Store
 
-# Credentials
-
 # Terraform ignores:
 
 # Local .terraform directories
@@ -56,7 +54,7 @@ docker-compose.override.yml
 logs/
 mage-ai.db
 mage_data/
-secrets/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -228,4 +226,5 @@ node_modules
 # Scratch files
 scratch*
 /mage_data*
-*secrets*.json
+
+# Credentials
