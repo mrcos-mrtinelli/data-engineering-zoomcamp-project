@@ -1,9 +1,6 @@
 .DS_Store
 
 # Credentials
-secrets/*
-
-!secrets/.gitkeep
 
 # Terraform ignores:
 
