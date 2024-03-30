@@ -230,3 +230,5 @@ scratch*
 # Credentials
 terraform/ssh/*
 !terraform/ssh/.gitkeep
+
+!mageai/lacity-active-businesses/credentials/.gitkeep
