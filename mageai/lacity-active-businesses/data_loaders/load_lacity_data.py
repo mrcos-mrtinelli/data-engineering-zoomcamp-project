@@ -16,7 +16,7 @@ def load_data_from_api(**kwargs) -> DataFrame:
     end_of_data = False
     offset = 0
 
-    active_businesses = []
+    df = []
     data_dtype = {
     "naics": pd.Int64Dtype(),
     "zip_code": str,
@@ -31,25 +31,24 @@ def load_data_from_api(**kwargs) -> DataFrame:
 
         lacity_data = pd.read_csv(url, dtype=data_dtype, parse_dates=dates)
 
-        # if len(lacity_data) < 50000:
-        #     end_of_data = True
+        if len(lacity_data) < 50000:
+            end_of_data = True
+        else: 
+            offset += LIMIT
         
-        active_businesses.append(lacity_data)
-
-        offset += LIMIT
+        df.append(lacity_data)
         
         # for testing - remove when done testing
         if offset > 100000:
             break
     
-    active_businesses = pd.concat(active_businesses)
+    df = pd.concat(df)
 
-    return active_businesses
+    return df
 
 
 @test
 def test_output(df) -> None:
-    """
-    Template code for testing the output of the block.
-    """
-    assert df is not None, 'The output is undefined'
+    
+    assert len(df.columns) == 16, f'Found {df.columns} cols. Expecting 16 cols.'
+
