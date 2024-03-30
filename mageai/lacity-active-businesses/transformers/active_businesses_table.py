@@ -6,18 +6,14 @@ if 'test' not in globals():
 
 @transformer
 def transform(data, *args, **kwargs):
-    # rename
-    data = data.rename(columns={'location_account': 'id'})
 
-    #create active businesses table
-    active_businesses_table = data.drop(["naics", "primary_naics_description", "location_1"], axis=1)
+    # drop unwanted columns
+    data = data.drop(["location_1"], axis=1)
 
-    return active_businesses_table
+    return data
 
 
 @test
-def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
-    assert output is not None, 'The output is undefined'
+def test_output(data, *args) -> None:
+
+    assert len(data.columns) == 15, f'Found {df.columns} cols. Expecting 15 cols.'
