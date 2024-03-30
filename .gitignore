@@ -44,6 +44,7 @@ terraform.rc
 
 .file_versions
 .gitkeep
+!credentials/.gitkeep
 .log
 .logs/
 .mage_temp_profiles
@@ -231,4 +232,5 @@ scratch*
 terraform/ssh/*
 !terraform/ssh/.gitkeep
 
-!mageai/lacity-active-businesses/credentials/.gitkeep
+mageai/lacity-active-businesses/credentials/*
+
