@@ -229,4 +229,4 @@ scratch*
 
 # Credentials
 terraform/ssh/*
-mageai/lacity-active-businesses/secrets/*
+!terraform/ssh/.gitkeep
