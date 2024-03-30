@@ -228,3 +228,5 @@ scratch*
 /mage_data*
 
 # Credentials
+terraform/ssh/*
+mageai/lacity-active-businesses/secrets/*
