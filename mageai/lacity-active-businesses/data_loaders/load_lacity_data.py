@@ -39,8 +39,8 @@ def load_data_from_api(**kwargs) -> DataFrame:
         df.append(lacity_data)
         
         # for testing - remove when done testing
-        if offset > 100000:
-            break
+        # if offset > 100000:
+        #     break
     
     df = pd.concat(df)
 
