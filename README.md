@@ -1,6 +1,6 @@
 # Problem
 
-While the raw data is freely available to the publice, visualizing the data is not. Addtionally, the data is only exportable as a whole by navigating to their website. If you want to download the data via API, this has to be done in chunks.
+While the raw data is freely available to the public, visualizing the data is not. Addtionally, the data is only exportable as a whole by navigating to their website. If you want to download the data via API, this has to be done in chunks.
 
 This project's aim is to:
 1. Provide a quick visualization for the Listing of Active Businesses
@@ -34,13 +34,13 @@ cd dezoomcamp-project
 **NOTE:** Do not enter a passphrase. 
 This newly created key will be added to your new VM in Google Compute. You will use this to SSH into the VM to run the pipeline later.
 
-**NOTE:** For ease of reproductions, only edit what is within curly braces. For example, `cp do-not-edit-me {yes-edit-this}`.
+**NOTE:** For ease of reproduction, only edit what's within curly braces. For example, `cp do-not-edit-me {yes-edit-this}`.
 
 ```
 ssh-keygen -t rsa -f terraform/ssh/vm_ssh_keys -C default_user -b 2048
 ``` 
 
-#### Add GCP Service Account Credentials
+#### Copy GCP Service Account Credentials to Project
 **NOTE:** Command below will update the file name to `credentials.json`, leave it that way.
 
 ```
@@ -48,7 +48,7 @@ cp {path/to/your/credetials_file_name.json} mageai/lacity-active-businesses/cred
 ```
 
 ## Running the Project 
-First, we will use Terraform to create the infrastructure. Then, we will connect send the pipeline via SSH to your VM and connect to the VM via SSH using VS Code.
+First, we will use Terraform to create the infrastructure. Then, we will send the pipeline via SSH to your VM and access it via SSH using VS Code.
 
 ### Terraform
 First, update the `project_id` variable in the `cstm.tfvars` file with the **project ID**, not the name.
@@ -74,7 +74,7 @@ Then, create/update local `~/.ssh/config` file with the following so you can SSH
 Host default-vm
   User default_user
   HostName {Paste the External IP for your new VM}
-  IdentityFile {path/to/}dezoomcamp-project/terraform/ssh/vm_ssh_keys
+  IdentityFile {add/home/path/to/}dezoomcamp-project/terraform/ssh/vm_ssh_keys
 ```
 
 ### Setting Up Pipeline on VM:
@@ -119,6 +119,8 @@ docker compose up
 * Open your browser and go to `http://localhost:6789/pipelines/lacity_active_businesses/triggers`
 * Toggle the switch to activate the pipeline schedule (Run on the 15th of each month at 7:00 AM UTC)
 * Click on **Run Once** then on Run Now
+
+The pipeline should complete in about 10 minutes.
 
 ## Visualizing the Data
 Once the pipeline completes it's run (should take about 10 min to complete running), go to BigQuery Studio.
