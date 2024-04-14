@@ -146,12 +146,14 @@ First, edit the following with your `project id`
 
 #### Running dbt
 ```
-dbt-env # start dbt-env
-dbt run --profiles-dir ./profiles.yml
+source dbt-env/bin/activate
+dbt run --profiles-dir .
 ```
 
 ### Visualizing the Data
-Once the pipeline completes it's run (should take about 10 min to complete running), go to BigQuery Studio.
+Once dbt completes it's run, go to BigQuery Studio.
 * Click on your project name > bq_default > lacity-active-businesses
+* Choose one of the totals tables
 * Click Export > Explore with Looker Studio
-* Authorize Looker Studio 
+* Authorize Looker Studio
+* Create your visualization 

@@ -9,4 +9,3 @@ source dbt-env/bin/activate
 # Install dbt core and bigquery plugin
 pip3 install dbt-bigquery
 
-alias dbt-env="source $HOME/dbt-env/bin/activate"
