@@ -1,3 +1,5 @@
+>## **NOTE:** The obvious here is that his is NOT production code. Just a project for fun and learning.
+
 # Problem
 
 While the raw data is freely available to the public, visualizing the data is not. Addtionally, the data is only exportable as a whole by navigating to their website. If you want to download the data via API, this has to be done in chunks.
@@ -85,7 +87,7 @@ Start by transferring the pipeline to the VM:
 
 ```
 cd .. # back into dezoomcap-project 
-scp -r -i ./dezoomcamp-project/terraform/ssh/vm_ssh_keys mageai default_user@{External IP for VM}:
+scp -r {mageai, lacitydata_dbt} default-vm:
 ```
 
 * Open VS Code and SSH into your VM using the `default-vm` config created earlier.
@@ -122,7 +124,33 @@ docker compose up
 
 The pipeline should complete in about 10 minutes.
 
-## Visualizing the Data
+### dbt
+After the pipline finished running from the steps above, go back to your VS Code that is connected to the Google VM.
+
+Open terminal and follow the steps below.
+
+#### Install dbt-core and BigQuery plugin
+
+```
+cd ~/lacitydata_dbt
+chmod +x install_dbt.sh
+./install_dbt.sh
+```
+
+#### Setup dbt
+The project is setup so the credentials used are the same ones in the `mageai/lacity-active-businesses/credentials` directory.
+
+First, edit the following with your `project id`
+* Edit `project` in `profiles.yml` and save changes
+* Edit `project_name` in `dbt_project.yml` and save changes
+
+#### Running dbt
+```
+dbt-env # start dbt-env
+dbt run --profiles-dir ./profiles.yml
+```
+
+### Visualizing the Data
 Once the pipeline completes it's run (should take about 10 min to complete running), go to BigQuery Studio.
 * Click on your project name > bq_default > lacity-active-businesses
 * Click Export > Explore with Looker Studio

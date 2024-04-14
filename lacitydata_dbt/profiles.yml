@@ -1,0 +1,14 @@
+lacitydata_dbt:
+  outputs:
+    dev:
+      project: update-project-id-here
+      dataset: bq_default
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: ../mageai/lacity-active-businesses/credentials/credentials.json
+      location: US
+      method: service-account
+      priority: interactive
+      threads: 1
+      type: bigquery
+  target: dev

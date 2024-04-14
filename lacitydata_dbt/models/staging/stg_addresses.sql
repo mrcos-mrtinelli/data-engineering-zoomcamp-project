@@ -7,4 +7,4 @@ select
     mailing_city,
     mailing_zip_code
 
-from `{{ var("project_name") }}.bq_default.lacity-active-businesses`
+from `{{ var("project_id") }}.bq_default.lacity-active-businesses`
