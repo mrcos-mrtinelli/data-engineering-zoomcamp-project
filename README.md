@@ -1,4 +1,4 @@
->## **NOTE:** The obvious here is that his is NOT production code. Just a project for fun and learning.
+>### **NOTE:** The obvious here is that this is NOT production code. Just a project for fun and learning.
 
 # Problem
 
